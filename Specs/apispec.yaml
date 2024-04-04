@@ -1,0 +1,83 @@
+openapi: 3.0.3
+info:
+  title: Cinema Management Api
+  description: Cinema Management Api
+  version: 1.0.0
+
+tags:
+  - name: ShowTime management
+    description: Create ShowTime
+paths:
+  /createshowtime:
+    post: 
+      tags:
+        - ShowTime management
+      summary: Create Showtime
+      description: Create showtime
+      requestBody:
+        content:
+          application/json:
+            schema: 
+             $ref: '#/components/schemas/ShowTimeCreationRequest'
+      responses: 
+        '200':
+          description: 'The Showtime has been successfuly created'
+          content: 
+            application/json:
+              schema: 
+               $ref: '#/components/schemas/ShowTimeCreationResponse'
+        
+        '400':
+           description: 'An error occurred during the shouwtime creation, see message'
+           content:
+             application/json:
+               schema: 
+                 $ref: '#/components/schemas/ErrorResponse'
+
+components:
+  schemas: 
+    ShowTimeCreationRequest:
+      type: object
+      properties:
+        SessionDate: 
+          type: string
+          format: date-time
+        AuditoriumId:
+          type: integer
+          minimum: 1
+          maximum: 1
+          default: 1
+          required: true
+        MovieName:
+          type: string
+          minLength: 4
+  
+    BaseResponse:
+       type: object
+       properties: 
+         Success:
+           type: boolean
+         
+    ErrorResponse:
+       allOf:
+        - $ref: '#/components/schemas/BaseResponse'
+        - type: object
+          properties: 
+            Message:
+              type: string
+          example: 
+            Success: false
+            Message: 'some error message'
+              
+    ShowTimeCreationResponse:
+      allOf:
+        - $ref: '#/components/schemas/BaseResponse'
+        - type: object
+          properties: 
+            Data:
+              type: integer
+          example:
+            success: true
+            Data: 1
+              
+              

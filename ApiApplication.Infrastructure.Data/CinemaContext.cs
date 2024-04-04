@@ -1,19 +1,20 @@
-﻿using ApiApplication.Database.Entities;
+﻿using ApiApplication.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace ApiApplication.Database
+namespace ApiApplication.Infrastructure.Data
 {
     public class CinemaContext : DbContext
     {
+        public DbSet<AuditoriumEntity>? Auditoriums { get; set; }
+        public DbSet<ShowtimeEntity>? ShowTimes { get; set; }
+        public DbSet<MovieEntity>? Movies { get; set; }
+        public DbSet<TicketEntity>? Tickets { get; set; }
+        
+        
         public CinemaContext(DbContextOptions<CinemaContext> options) : base(options)
         {
             
         }
-
-        public DbSet<AuditoriumEntity> Auditoriums { get; set; }
-        public DbSet<ShowtimeEntity> Showtimes { get; set; }
-        public DbSet<MovieEntity> Movies { get; set; }
-        public DbSet<TicketEntity> Tickets { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
