@@ -15,9 +15,9 @@ namespace ApiApplication.Infrastructure.Repository.Repositories
             _context = context;
         }
 
-        public async Task<ShowtimeEntity> GetWithMoviesByIdAsync(int id, CancellationToken cancel)
+        public  Task<ShowtimeEntity> GetWithMoviesByIdAsync(int id, CancellationToken cancel)
         {
-            return await _context.ShowTimes
+            return  _context.ShowTimes
                 .Include(x => x.Movie)
                 .FirstOrDefaultAsync(x => x.Id == id, cancel);
         }

@@ -5,7 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace ApiApplication.Seed
 {
-    public class SampleData
+    public static class SampleData
     {
         public static void Initialize(IApplicationBuilder app)
         {
