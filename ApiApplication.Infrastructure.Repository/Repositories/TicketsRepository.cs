@@ -1,13 +1,9 @@
-﻿using ApiApplication.Database.Entities;
+﻿using ApiApplication.Domain.Entities;
+using ApiApplication.Domain.Interfaces.Repositories;
+using ApiApplication.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using System.Threading;
-using System;
-using System.Linq;
-using ApiApplication.Database.Repositories.Abstractions;
 
-namespace ApiApplication.Database.Repositories
+namespace ApiApplication.Infrastructure.Repository.Repositories
 {
     public class TicketsRepository : ITicketsRepository
     {

@@ -1,10 +1,6 @@
-﻿using ApiApplication.Database.Entities;
-using System;
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using ApiApplication.Domain.Entities;
 
-namespace ApiApplication.Database.Repositories.Abstractions
+namespace ApiApplication.Domain.Interfaces.Repositories
 {
     public interface ITicketsRepository
     {
