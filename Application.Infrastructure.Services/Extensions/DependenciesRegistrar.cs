@@ -12,10 +12,6 @@ public static class DependenciesRegistrar
         services.AddGrpcClient<MoviesApi.MoviesApiClient>(options =>
         {
             options.Address = new Uri(configuration[Constants.ProviderApiBaseUri]);
-        }).ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler()
-        {
-            ServerCertificateCustomValidationCallback =
-                HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
         }).AddCallCredentials(((_, metadata) =>
         {
             metadata.Add("X-Apikey", configuration[Constants.ProviderApiKey]);
